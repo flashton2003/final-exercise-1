@@ -4,12 +4,15 @@
 
 import pandas
 
+def remove_whitespace(each, replace):
+        return each.replace(' ', replace)
+
 data = pandas.read_csv("weather_data/weather_year.csv")
 new_col_names = []
 col_names = data.columns.values.tolist()
 for each in col_names:
 	each = each.strip()
-	new_col_names.append(each.replace(' ', '_'))
+	new_col_names.append(remove_whitespace(each, '_'))
 
 for each in new_col_names:
 	print each
