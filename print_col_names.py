@@ -2,10 +2,18 @@
 # This script should output a list of column names from a CSV file with any spaces replaced by underscores (the '_' character)
 # This script was started by someone else, and you've been asked to fix any errors and provide this functionality
 
-data = pandas.read_csv("weather_data/weatheryear.csv")
+import pandas
 
+data = pandas.read_csv("weather_data/weather_year.csv")
+new_col_names = []
 col_names = data.columns.values.tolist()
-print col_names
+for each in col_names:
+	each = each.strip()
+	new_col_names.append(each.replace(' ', '_'))
+
+for each in new_col_names:
+	print each
+
 
 # STEP 1 - Define a function below called "replace_whitespace" that can replace characters in a string with others. The function should take two parameters, the first being the string that needs whitespace characters replacing, and the second being the character to insert instead of the whitespace.
 
