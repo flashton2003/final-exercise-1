@@ -7,11 +7,20 @@ import pandas
 def remove_whitespace(each, replace):
         return each.replace(' ', replace)
 
-data = pandas.read_csv("weather_data/weather_year.csv")
+def test_what_whitespace(each):
+	each = each.strip()
+	try:
+		assert len(each.split(' ')) == len(each.split())
+	except AssertionError:
+		print 'you might have tabs or other whitespace than single spaces'
+
+
+data = pandas.read_csv("weather_data/pa_weather_year.csv")
 new_col_names = []
 col_names = data.columns.values.tolist()
 for each in col_names:
 	each = each.strip()
+	test_what_whitespace(each)
 	new_col_names.append(remove_whitespace(each, '_'))
 
 for each in new_col_names:
