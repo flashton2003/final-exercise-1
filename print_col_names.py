@@ -30,9 +30,11 @@ for each in col_names:
 	#test_what_whitespace(each)
 	new_col_names.append(remove_whitespace(each, '_'))
 
+outhandle = open('columnNames', 'w')
+
 for each in new_col_names:
 	test_what_whitespace(each)
-	print each
+	outhandle.write('%s\n' % each)
 
 
 # STEP 1 - Define a function below called "replace_whitespace" that can replace characters in a string with others. The function should take two parameters, the first being the string that needs whitespace characters replacing, and the second being the character to insert instead of the whitespace.
